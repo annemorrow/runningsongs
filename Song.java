@@ -44,6 +44,8 @@ public class Song implements Comparable<Song> {
   }
   
   public static void main (String[] args) {
+    play("/Users/anne/Music/iTunes/iTunes Music/Firefly/Firefly/01 Hero of Canton.mp3");
+    
     play("/Users/anne/Music/iTunes/iTunes Music/George Papavgeris/For My Next Trick/02 Glory Gone.mp3");
   }
   
