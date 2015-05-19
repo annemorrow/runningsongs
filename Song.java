@@ -36,7 +36,7 @@ public class Song implements Comparable<Song> {
   public int compareTo(Song that) {
     if (this.bpm < that.bpm) return -1;
     if (this.bpm > that.bpm) return 1;
-    return 0;
+    return (this.path.compareTo(that.path));
   }
   
 }
