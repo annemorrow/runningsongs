@@ -32,7 +32,6 @@ public class Song implements Comparable<Song> {
     return 0;
   }
   
-  // there is an example on Sedgewick's website
   public static void play(String path) throws IOException  {
       File file = new File(path);
       //first check if Desktop is supported by Platform or not
