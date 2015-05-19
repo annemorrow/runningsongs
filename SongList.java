@@ -19,7 +19,7 @@ public class SongList {
     library = new SET();
   }
   
-  private void saveSongs() {
+  public void saveSongs() {
     Out list = new Out("songlist.txt");
     for (Song s : library) {
       list.println(s.path());

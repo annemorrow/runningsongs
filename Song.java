@@ -32,15 +32,9 @@ public class Song implements Comparable<Song> {
     return 0;
   }
   
-  public static void play(String path) throws IOException  {
-      File file = new File(path);
-      //first check if Desktop is supported by Platform or not
-      if(!Desktop.isDesktopSupported()){
-          System.out.println("Desktop is not supported");
-          return;
-      }
-      Desktop desktop = Desktop.getDesktop();
-      if(file.exists()) desktop.open(file);
+  public static void play(String path) {
+    MP3 song = new MP3(path);
+    song.play();
   }
   
   public int compareTo(Song that) {
@@ -49,8 +43,8 @@ public class Song implements Comparable<Song> {
     return (this.path.compareTo(that.path));
   }
   
-  public static void main (String[] args) throws IOException {
-    play("/Users/anne/Music/iTunes/iTunes Music/Young Dubliners/Nine/05 Seeds of Sorrow.m4a");
+  public static void main (String[] args) {
+    play("/Users/anne/Music/iTunes/iTunes Music/George Papavgeris/For My Next Trick/02 Glory Gone.mp3");
   }
   
 }
