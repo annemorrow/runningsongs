@@ -1,3 +1,7 @@
+import java.io.IOException;
+import java.awt.Desktop;
+import java.io.File;
+
 public class Song implements Comparable<Song> {
   
   private String path;
@@ -29,14 +33,25 @@ public class Song implements Comparable<Song> {
   }
   
   // there is an example on Sedgewick's website
-  public void play(String path) {
-    
+  public static void play(String path) throws IOException  {
+      File file = new File(path);
+      //first check if Desktop is supported by Platform or not
+      if(!Desktop.isDesktopSupported()){
+          System.out.println("Desktop is not supported");
+          return;
+      }
+      Desktop desktop = Desktop.getDesktop();
+      if(file.exists()) desktop.open(file);
   }
   
   public int compareTo(Song that) {
     if (this.bpm < that.bpm) return -1;
     if (this.bpm > that.bpm) return 1;
     return (this.path.compareTo(that.path));
+  }
+  
+  public static void main (String[] args) throws IOException {
+    play("/Users/anne/Music/iTunes/iTunes Music/Young Dubliners/Nine/05 Seeds of Sorrow.m4a");
   }
   
 }
