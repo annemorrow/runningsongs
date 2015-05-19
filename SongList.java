@@ -1,5 +1,4 @@
 import java.io.File;
-import java.util.regex.Pattern;
 
 public class SongList {
   private SET<Song> library = new SET();
@@ -43,7 +42,7 @@ public class SongList {
         addFolder(file);
       } else {
         // will need to check that file is a proper type, once I decide what types I'm supporting
-        if (Pattern.matches(".*\\.mp3", file.getAbsolutePath())) {
+        if (file.getAbsolutePath().endsWith(".mp3")) {
           Song song = new Song(file.getAbsolutePath());
           addSong(song);
         }
@@ -54,7 +53,7 @@ public class SongList {
   public static void main(String[] args) {
     SongList songlist = new SongList();
     songlist.clearSongs();
-    songlist.addFolder("/Users/anne/Music");
+    songlist.addFolder("/Users/anne/Documents/programming/runningsongs");
     songlist.saveSongs();
   }
 }
