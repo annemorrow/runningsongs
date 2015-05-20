@@ -8,11 +8,17 @@ public class Song implements Comparable<Song> {
   private String name; // haven't done anything with this yet
   private int bpm;
   
+  /**
+  * Create a Song object from the absolute path when the beats per minute is known
+  */
   public Song (String path, int bpm) {
     this.path = path;
     this.bpm = bpm;
   }
   
+  /**
+  * Create a Song object from the absolute path when the beats per minute must be calculated.
+  */
   public Song (String path) {
     if (path.endsWith(".mp3")) {
     this.path = path;
@@ -20,19 +26,30 @@ public class Song implements Comparable<Song> {
     }
   }
   
+  /**
+  * Returns the stored absolute path of a Song object.
+  */
   public String path() {
     return this.path;
   }
   
+  /**
+  * Returns the stored beats per minute of a Song object.
+  */
   public int bpm() {
     return this.bpm;
   }
   
-  // this is going to be the real trick
+  /**
+  * Calculates the beats per minute of a song.
+  */
   private int findBPM(String path) {
     return 0;
   }
   
+  /**
+  * Plays the song (must be mp3 or wav format).
+  */
   public static void play(String path) {
     if (path.endsWith(".mp3")) {
       MP3 song = new MP3(path);
