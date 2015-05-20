@@ -14,9 +14,10 @@ public class Song implements Comparable<Song> {
   }
   
   public Song (String path) {
-    //  TODO: check whether the file is a song type using regular expressions
+    if (path.endsWith(".mp3")) {
     this.path = path;
     this.bpm = findBPM(path);
+    }
   }
   
   public String path() {
@@ -33,8 +34,12 @@ public class Song implements Comparable<Song> {
   }
   
   public static void play(String path) {
-    MP3 song = new MP3(path);
-    song.play();
+    if (path.endsWith(".mp3")) {
+      MP3 song = new MP3(path);
+      song.play();
+    } else if (path.endsWith(".wav")) {
+      StdAudio.play(path);
+    }
   }
   
   public int compareTo(Song that) {
@@ -44,9 +49,8 @@ public class Song implements Comparable<Song> {
   }
   
   public static void main (String[] args) {
-    play("/Users/anne/Music/iTunes/iTunes Music/Firefly/Firefly/01 Hero of Canton.mp3");
-    
-    play("/Users/anne/Music/iTunes/iTunes Music/George Papavgeris/For My Next Trick/02 Glory Gone.mp3");
+    double[] array = StdAudio.read("wavsongs/The Hero of Canton.wav");
+    StdAudio.play(array);
   }
   
 }
