@@ -55,7 +55,13 @@ public class Song implements Comparable<Song> {
       MP3 song = new MP3(path);
       song.play();
     } else if (path.endsWith(".wav")) {
-      StdAudio.play(path);
+      try {
+        java.applet.AudioClip clip =
+        java.applet.Applet.newAudioClip( new java.net.URL("file:" + path));
+        clip.play();
+      } catch (java.net.MalformedURLException murle) {
+        System.out.println(murle);
+      }
     }
   }
   
@@ -66,7 +72,8 @@ public class Song implements Comparable<Song> {
   }
   
   public static void main (String[] args) {
-    double[] array = StdAudio.read("wavsongs/The Hero of Canton.wav");
+    String title = args[0];
+    double[] array = StdAudio.read("wavsongs/" + title + ".wav");
     StdAudio.play(array);
   }
   
